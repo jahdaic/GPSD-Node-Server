@@ -1,7 +1,7 @@
 const http = require('http');
 const gpsd = require('node-gpsd-client');
 
-const values = {};
+let values = {};
 
 const client = new gpsd({
 	port: 2947,
@@ -26,13 +26,18 @@ client.on('error', err => {
 });
 
 client.on('TPV', data => {
-	console.log(`Data: ${data}`);
+	console.log(`Data: ${JSON.stringify(data)}`);
+	values = data;
 });
 
 client.connect();
 
 const requestListener = (request, response) => {
-	response.writeHead(200);
+	response.writeHead(200, {
+		'Content-Type': 'application/json',
+		'Access-Control-Allow-Origin': '*',
+		'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+	});
 
 	const json = JSON.stringify(values);
 
