@@ -6,10 +6,12 @@ const values = {};
 const client = new gpsd({
 	port: 2947,
 	hostname: 'localhost',
-	parse: true
+	parse: true,
+	reconnectThreshold: 15,
+	reconnectInterval: 5,
 });
 
-client.onClose('connected', () => {
+client.on('connected', () => {
 	console.log('GPSD Connected');
 
 	client.watch({
@@ -19,11 +21,11 @@ client.onClose('connected', () => {
 	});
 });
 
-client.onClose('error', err => {
+client.on('error', err => {
 	console.log(`Error: ${err.message}`);
 });
 
-client.onClose('TPV', data => {
+client.on('TPV', data => {
 	console.log(`Data: ${data}`);
 });
 
