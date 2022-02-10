@@ -1,0 +1,38 @@
+{
+	"name": "gpsd-node-server",
+	"version": "1.0.0",
+	"description": "An HTTP Node server for gpsd GPS data",
+	"license": "GPL-3.0-or-later",
+	"keywords": [
+		"node, gps, gpsd, server"
+	],
+	"homepage": "https://github.com/jahdaic/GPSD-Node-Server",
+	"bugs": {
+		"url": "https://github.com/jahdaic/GPSD-Node-Server/issues",
+		"email": "jahdaic@yahoo.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jahdaic/GPSD-Node-Server.git"
+	},
+	"author": {
+		"name": "Jahdai Cintron",
+		"email": "jahdaic@yahoo.com"
+	},
+	"scripts": {
+		"start": "node server.js"
+	},
+	"funding": [
+		{
+			"type": "PayPal",
+			"url": "https://www.paypal.com/donate/?hosted_button_id=MXB2U5XFZBKB6"
+		},
+		{
+			"type": "CashApp",
+			"url": "http://cash.app/$JahdaiCintron"
+		}
+	],
+	"dependencies": {
+		"node-gpsd-client": "^1.4.1"
+	}
+}
