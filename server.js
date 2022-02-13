@@ -1,4 +1,6 @@
+const https = require('https');
 const http = require('http');
+var fs = require('fs');
 const gpsd = require('node-gpsd-client');
 
 let values = {};
@@ -44,6 +46,13 @@ const requestListener = (request, response) => {
 	response.end(json);
 };
 
-const server = http.createServer(requestListener);
+const options = {
+	key: fs.readFileSync('./localhost.key'),
+	cert: fs.readFileSync('./localhost.cert')
+};
 
-server.listen(8080);
+const httpserver = http.createServer(requestListener);
+const httpsServer = https.createServer(options, requestListener);
+
+httpserver.listen(8000);
+httpsServer.listen(8443);
