@@ -47,8 +47,8 @@ const requestListener = (request, response) => {
 };
 
 const options = {
-	key: fs.readFileSync('./localhost.key'),
-	cert: fs.readFileSync('./localhost.cert')
+	key: fs.readFileSync(`${__dirname}/localhost.key`),
+	cert: fs.readFileSync(`${__dirname}/localhost.cert`)
 };
 
 const httpserver = http.createServer(requestListener);
